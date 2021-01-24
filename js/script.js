@@ -182,13 +182,14 @@ move();
 const btns = document.querySelectorAll('.btn');
 const modalOverlay = document.querySelector('.modal-overlay ');
 const modals = document.querySelectorAll('.modal');
-
+const video = document.querySelectorAll('video');
 btns.forEach((el) => {
 	el.addEventListener('click', (e) => {
 		let path = e.currentTarget.getAttribute('data-path');
 
 		modals.forEach((el) => {
 			el.classList.remove('modal--visible');
+
 		});
 
         document.querySelector(`[data-target="${path}"]`).classList.add('modal--visible');
@@ -207,6 +208,10 @@ modalOverlay.addEventListener('click', (e) => {
 		modalOverlay.classList.remove('modal-overlay--visible');
 		modals.forEach((el) => {
 			el.classList.remove('modal--visible');
+			Array.prototype.forEach.call(video, iframe => {
+				iframe.contentWindow.postMessage(JSON.stringify({ event: 'command', 
+				func: 'stopVideo' }), '*');
+			})
 		});
 	}
 });;
@@ -241,9 +246,23 @@ if( animItems.length > 0){
         scrollTop  = window.pageYOffset || document.documentElement.scrollTop;
         return{ top: rect.top + scrollTop, left: rect.left + scrollLeft}
     }
+
+    
+    
     setTimeout(() =>{
         animOnScroll();
-    },300)
+    },500)
+}
+
+const windowWidth = window.innerWidth;
+
+if(windowWidth < 760){
+    
+   let removeClassItems = document.querySelectorAll('._anim-items');
+   removeClassItems.forEach(el => {
+    el.classList.remove("_active");
+    el.classList.remove("_active");
+   })
 };
 $(document).ready(function () {
     /*$('.header_burger').on('click',function(){
@@ -258,15 +277,7 @@ $(document).ready(function () {
     
   
     // slider//
-    $('.slider').slick({
-        arrows:false,
-        dots:true,
-        customPaging:function(){return ''},
-        infinite:true,
-        autoplay:true,
-        speed:600,
-        cssEase: 'linear',
-    })
+   
     //scroll_down//
     $('.menu a[href^="#"]').click(function(){
         let scroll_el = $(this).attr('href');
