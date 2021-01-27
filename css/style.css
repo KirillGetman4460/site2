@@ -302,15 +302,17 @@ section {
   text-align: right;
 }
 
-.products_image {
-  -webkit-box-shadow: 0px 0px 14px 0px rgba(0, 0, 0, 0.25);
-          box-shadow: 0px 0px 14px 0px rgba(0, 0, 0, 0.25);
-}
-
 .products_image img {
   width: 100%;
   -o-object-fit: cover;
      object-fit: cover;
+  -webkit-box-shadow: 0px 0px 14px 0px rgba(0, 0, 0, 0.25);
+          box-shadow: 0px 0px 14px 0px rgba(0, 0, 0, 0.25);
+}
+
+.products_image2 img {
+  -webkit-box-shadow: 0px 0px 14px 0px rgba(0, 0, 0, 0.25);
+          box-shadow: 0px 0px 14px 0px rgba(0, 0, 0, 0.25);
 }
 
 .products_item2 {
@@ -327,6 +329,11 @@ section {
       flex-wrap: wrap;
   overflow: hidden;
   padding-bottom: 190px;
+}
+
+.products_item2 img {
+  -webkit-box-shadow: 0px 0px 14px 0px rgba(0, 0, 0, 0.25);
+          box-shadow: 0px 0px 14px 0px rgba(0, 0, 0, 0.25);
 }
 
 .products_title2 h1 {
@@ -603,8 +610,6 @@ section {
   -o-transition: all 0.8s ease-in-out 0s;
   transition: all 0.8s ease-in-out 0s;
   opacity: 0;
-  -webkit-box-shadow: 0 0 14px 1px rgba(0, 0, 0, 0.25);
-  box-shadow: 0 0 12px 0px rgba(0, 0, 0, 0.25);
 }
 
 .back_number4 {
