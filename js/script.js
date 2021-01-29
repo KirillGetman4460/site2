@@ -208,10 +208,10 @@ modalOverlay.addEventListener('click', (e) => {
 		modalOverlay.classList.remove('modal-overlay--visible');
 		modals.forEach((el) => {
 			el.classList.remove('modal--visible');
-			Array.prototype.forEach.call(video, iframe => {
-				iframe.contentWindow.postMessage(JSON.stringify({ event: 'command', 
-				func: 'stopVideo' }), '*');
-			})
+			$("iframe").each(function() { 
+				var src= $(this).attr('src');
+				$(this).attr('src',src);  
+		});
 		});
 	}
 });;
